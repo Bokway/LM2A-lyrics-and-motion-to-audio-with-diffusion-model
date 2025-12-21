@@ -1,0 +1,1 @@
+# LM2A-lyrics-and-motion-to-audio-with-diffusion-model
