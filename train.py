@@ -300,7 +300,7 @@ def parse_args():
                    help='触发学习率衰减的步数，用逗号分隔（留空关闭衰减）')
     p.add_argument('--lr_decay_factors', type=str, default='', 
                    help='每次衰减的倍数，与steps一一对应（留空关闭衰减）')
-    # EMA衰减参数（适配DDIM）
+    # EMA衰减参数
     p.add_argument('--ema_decay', type=float, default=0.999, help='EMA衰减系数（默认0.9998）')
     
     return p.parse_args()
