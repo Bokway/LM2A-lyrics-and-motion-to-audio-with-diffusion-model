@@ -16,3 +16,7 @@ Pipline too:
 4. Adjust the parameters and run train to obtain the ckpt.
 6. Adjust the parameters and run val to obtain the evaluation results.
 7. The tools in sometest can generate loss graphs and generate audio.
+
+
+My env:
+  Python 3.11.7 + CUDA 12.4 + PyTorch 2.5.1+cu121
