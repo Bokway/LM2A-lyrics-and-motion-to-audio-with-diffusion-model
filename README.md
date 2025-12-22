@@ -1,5 +1,7 @@
 # LM2A:lyrics and motion to audio with diffusion model
 
+
+Pipline:
 1. 下载BigVGAN和dataset
 2. 运行preprocess获得1868个npz
 3. 运行newsplit_npz,得到train/val/test set。(注意移出motion_stats.npz)
@@ -7,7 +9,7 @@
 6. 调整参数运行val获得评估结果
 7. sometest里面的工具可以生成loss图以及生成音频audio
 
-English:
+Pipline too:
 1. Download BigVGAN and the dataset.
 2. Run preprocess to obtain 1868 npz files.
 3. Run newsplit_npz to get the train/val/test sets. (Note to remove motion_stats.npz).
