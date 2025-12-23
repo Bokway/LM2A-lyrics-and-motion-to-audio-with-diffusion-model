@@ -102,15 +102,18 @@ This code loads a mel spectrogram from a .npz file, uses BigVGAN tovocode it int
 train process:
 
 
-<img width="865" height="397" alt="image" src="https://github.com/user-attachments/assets/25fd5064-8378-40d5-89d1-b5dd6f52604a" />
+<img width="1948" height="894" alt="image" src="https://github.com/user-attachments/assets/f350f4fa-1bef-46f2-a0b0-6e65474e9de0" />
+
 
 sample process:
 
-<img width="865" height="264" alt="image" src="https://github.com/user-attachments/assets/2fceb78b-9f41-4473-8050-8d84366e0866" />
+<img width="1972" height="601" alt="image" src="https://github.com/user-attachments/assets/962fa4f7-4d27-4363-858d-2456ebc46269" />
+
 
 Unet1d:
 
-<img width="865" height="407" alt="image" src="https://github.com/user-attachments/assets/fe9dfcc7-2eac-46d8-b7c0-4f69a34628c6" />
+<img width="2000" height="940" alt="image" src="https://github.com/user-attachments/assets/5ecced62-10d5-45ae-a719-d16a6f81011a" />
+
 
 
 
