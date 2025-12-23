@@ -96,5 +96,24 @@ the evaluation metrics in this script do not fully reflect subjective listening 
 
 This code loads a mel spectrogram from a .npz file, uses BigVGAN tovocode it into a waveform, and saves the waveform as a .wav file.
 
+**Just some ugly flow charts**
+
+
+train process:
+
+
+<img width="865" height="397" alt="image" src="https://github.com/user-attachments/assets/25fd5064-8378-40d5-89d1-b5dd6f52604a" />
+
+sample process:
+
+<img width="865" height="264" alt="image" src="https://github.com/user-attachments/assets/2fceb78b-9f41-4473-8050-8d84366e0866" />
+
+Unet1d:
+
+<img width="865" height="407" alt="image" src="https://github.com/user-attachments/assets/fe9dfcc7-2eac-46d8-b7c0-4f69a34628c6" />
+
+
+
+
 
 
