@@ -161,7 +161,7 @@ def build_conditional_feats(smplfull, sliced, start_seconds, sequence_seconds=6,
 	found_key = None
 	for k in keys:
 		try:
-			from LM2ANew import preprocess as _p  # no-op to avoid lint
+			#from LM2ANew import preprocess as _p  # no-op to avoid lint
 			# fallback: parse like before if dataset.parse_timestamp exists
 			import re
 			# use simple numeric parse here
@@ -352,4 +352,5 @@ if __name__ == '__main__':
 	2.modify the root and out path to your dataset path and desired output path
 	3.the dataset is that one with smplfull.json, sliced.json and audio.wav in each song folder extrated from JustDance the game
 	
+
 	"""
