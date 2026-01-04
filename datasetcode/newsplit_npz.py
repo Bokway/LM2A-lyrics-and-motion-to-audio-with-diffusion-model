@@ -5,6 +5,14 @@ Split .npz dataset into train/val/test folders.
 Usage examples:
   python3 datasetcode/split_npz.py --npz_dir /path/to/npz --out_dir /path/to/out 
   python3 datasetcode/split_npz.py --npz_dir npz --out_dir npz_split --move
+
+
+a little bug: 
+Remember to move the sample_info_list.json file and motion_stats.npz file out of the npz directory before running.
+
+一个小bug：
+在运行之前记得把sample_info_list.json文件和motion_stats.npz文件从npz目录下移出来
+
 """
 import argparse
 import os
@@ -16,8 +24,8 @@ from pathlib import Path
 
 def parse_args():
     p = argparse.ArgumentParser(description="Split .npz files into train/val/test sets")
-    p.add_argument("--npz_dir", default="/mnt/mydev2/Bob/LM2ANew/npz", help="Directory containing .npz files")
-    p.add_argument("--out_dir", default="/mnt/mydev2/Bob/LM2ANew/npz_split", help="Output base directory")
+    p.add_argument("--npz_dir", default="D:\\lm2d\\npz", help="Directory containing .npz files")
+    p.add_argument("--out_dir", default="D:\\lm2d\\npz_split", help="Output base directory")
     # 新增测试集比例参数（默认7:2:1）
     p.add_argument("--train_ratio", type=float, default=0.7, help="Fraction for training set")
     p.add_argument("--val_ratio", type=float, default=0.2, help="Fraction for validation set")
@@ -125,21 +133,20 @@ if __name__ == "__main__":
     
 
 """
-Total files: 1869
-Train set: 1308 (70.0%)
-Val set: 374 (20.0%)
-Test set: 187 (10.0%)
-All files saved to: /mnt/mydev2/Bob/LM2ANew/npz_split    
+Total files: 1780
+Train set: 1246 (70.0%)
+Val set: 356 (20.0%)
+Test set: 178 (10.0%)
+All files saved to: D:\lm2d\npz_split
 
 before you run this script, make sure you have the correct directory structure and that 
 the npz files are all in the specified npz_dir.
 
 a little bug: 
-the generated train/val/test splits may have one npz file that shows the detailed statistics of motion data,
-named motion_stats.npz, which should be moved out of the npz_split directory to avoid errors during training.
+Remember to move the sample_info_list.json file and motion_stats.npz file out of the npz directory before running.
 
 一个小bug：
-生成的里面可能会有一个npz文件的格式和其他的不太一样，是motion_stats.npz，需要手动把它移出来到npz_split目录下，否则后面在训练时会报错。
+在运行之前记得把sample_info_list.json文件和motion_stats.npz文件从npz目录下移出来
 
 
 """
