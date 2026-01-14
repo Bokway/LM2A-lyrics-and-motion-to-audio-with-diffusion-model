@@ -96,8 +96,9 @@ def match_len(arr, target_len, mode='repeat'):
     # cur_len < target_len -> pad by repeating last frame
     if cur_len == 0:
         pad_shape = list(cur.shape)
-        pad_shape[0] = target_len - cur_len
-        pad = np.zeros(tuple(pad_shape), dtype=np.float32)
+        #pad_shape[0] = target_len - cur_len
+        #pad = np.zeros(tuple(pad_shape), dtype=np.float32)
+        pad_shape[0] = target_len
         return np.concatenate([cur.astype(np.float32), pad], axis=0)
     last = cur[-1][None, :].astype(np.float32)
     reps = target_len - cur_len
@@ -130,13 +131,15 @@ class MelDataset(Dataset):
         hop = int(data.get('hop_length', 256))
 
         # target length: use motion's time steps if available, else use lyrics, else use mel
+        """
         if motion is not None and getattr(motion, 'shape', None) is not None:
             T = motion.shape[0]
         elif lyrics is not None and getattr(lyrics, 'shape', None) is not None:
             T = lyrics.shape[0]
         else:
             T = mel.shape[1]
-        
+        """
+
         # Always align to mel's time dimension
         T = mel.shape[1]   # 516
 
