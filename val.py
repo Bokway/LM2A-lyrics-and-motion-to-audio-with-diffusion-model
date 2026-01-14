@@ -189,7 +189,7 @@ def assess_single_sample(npz_path, ckpt_path, out_dir, device='cuda:1'):
         ckpt=ckpt_path,
         out_dir=temp_out_dir,
         device=device,
-        guidance=1.0,
+        guidance=2.1,
         steps=1000
     )
     
@@ -321,10 +321,10 @@ def assess_batch(npz_dir, ckpt_path, out_dir, device='cuda:1', max_samples=None,
 
 def parse_args():
     p = argparse.ArgumentParser()
-    p.add_argument('--ckpt', default='/mnt/mydev2/Bob/LM2ANew/checkpoints_adan/newunetsplit250epoch1217/ckpt_step_19000.pt',help='ckpt path') # your ckpt path
-    p.add_argument('--npz_dir', default='/mnt/mydev2/Bob/LM2ANew/npz_split/test',help='test npz dir') # your npz dir
-    p.add_argument('--out_dir', default='/mnt/mydev2/Bob/LM2ANew/ceshi/final19000',help='output dir') # your output dir
-    p.add_argument('--device', default='cuda:1',help='device') # your device
+    p.add_argument('--ckpt', default='/lm2d/checkpoints/ckpt_final_adan_500epoch.pt',help='ckpt path') # your ckpt path
+    p.add_argument('--npz_dir', default='/lm2d/npz_split/test',help='test npz dir') # your npz dir
+    p.add_argument('--out_dir', default='/lm2d/testval',help='output dir') # your output dir
+    p.add_argument('--device', default='cuda',help='device') # your device
     p.add_argument('--max_samples', type=int, default=10,help='max samples (None for all)')
     
     p.add_argument('--no-random', action='store_false', dest='random_sample', default=True,
