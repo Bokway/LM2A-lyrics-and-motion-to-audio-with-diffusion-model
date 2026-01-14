@@ -15,7 +15,7 @@ import copy
 
 from datasetcode.dataset import MelDataset
 from models.embedding import CondProjection, TimestepEmbedding
-from models.unet1d import UNet1D
+#from models.unet1d import UNet1D
 from models.unet1d_ultimate import UNet1D_ultimate
 from models.diffusion import GaussianDiffusion
 from models.adan import Adan
@@ -82,7 +82,7 @@ def train(args):
         time_emb_dim=args.time_emb_dim,
         num_res_blocks=2,    # 可根据需求调整（建议先2）
         mid_blocks=3,        # 中间块数量（建议3）
-        attn_heads=4         # 注意力头数（显存够可改8）
+        attn_heads=8         # 注意力头数（显存够可改8）
     ).to(device)
     
     diffusion = GaussianDiffusion(unet, timesteps=args.timesteps, device=device, dataset_mean=args.dataset_mean, dataset_std=args.dataset_std)
@@ -246,7 +246,7 @@ def train(args):
         csv_writer.writerow([epoch, step, last_train_loss, val_loss_avg, round(epoch_time, 2)])
         csv_file.flush()
 
-    final_ckpt_path = os.path.join(args.save_dir, 'ckpt_final_adan_10000epoch.pt')
+    final_ckpt_path = os.path.join(args.save_dir, 'ckpt_final_adan_1000epoch.pt')
     save_state_dict = {
         'step': step,
         'epoch': epoch,
@@ -272,16 +272,16 @@ def train(args):
 
 def parse_args():
     p = argparse.ArgumentParser()
-    p.add_argument('--npz_dir', default='/mnt/mydev2/Bob/LM2ANew/npz_split/train') # your train npz dir
-    p.add_argument('--val_npz_dir', default='/mnt/mydev2/Bob/LM2ANew/npz_split/val') # your val npz dir
+    p.add_argument('--npz_dir', default='/lm2d/npz_split/train') # your train npz dir
+    p.add_argument('--val_npz_dir', default='/lm2d/npz_split/val') # your val npz dir
     p.add_argument('--batch_size', type=int, default=16) # batch size
     p.add_argument('--lr', type=float, default=2e-4) # learning rate for Adan
     p.add_argument('--weight_decay', type=float, default=0.0001) # weight decay for Adan
-    p.add_argument('--epochs', type=int, default=1500) # total epochs
-    p.add_argument('--device', default='cuda:1') # your device
-    p.add_argument('--save_dir', default='/mnt/mydev2/Bob/LM2ANew/checkpoints_adan') # your save dir
+    p.add_argument('--epochs', type=int, default=500) # total epochs
+    p.add_argument('--device', default='cuda') # your device
+    p.add_argument('--save_dir', default='/lm2d/checkpoints') # your save dir
     p.add_argument('--ckpt', default=None)
-    p.add_argument('--save_interval', type=int, default=10000) 
+    p.add_argument('--save_interval', type=int, default=1000) 
     p.add_argument('--log_interval', type=int, default=10)
     p.add_argument('--timesteps', type=int, default=1000)
     p.add_argument('--cond_dim', type=int, default=128)
