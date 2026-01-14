@@ -32,7 +32,7 @@ def build_models(cond_dim=128, base_dim=256, dim_mults=(1,2,4), time_emb_dim=256
     time_emb_dim=time_emb_dim,
     num_res_blocks=2,    # 和训练时的参数一致
     mid_blocks=3,        # 和训练时的参数一致
-    attn_heads=4         # 和训练时的参数一致
+    attn_heads=8         # 和训练时的参数一致
 ).to(device)
     
     cond_proj = CondProjection(motion_dim=78*3, text_dim=768, out_dim=cond_dim).to(device)
@@ -210,8 +210,8 @@ def sample_from_npz(npz_path, ckpt_path, out_dir, device='cpu', timesteps=1000, 
             x = x_prev
             
             # 在x = x_prev后添加
-            if ti % 10 == 0 and t > 0:
-                x = x + torch.randn_like(x) * 1e-3  # 极轻微噪声，不破坏结构但打破过拟合
+            #if ti % 10 == 0 and t > 0:
+            #    x = x + torch.randn_like(x) * 1e-3  # 极轻微噪声，不破坏结构但打破过拟合
 
             if (ti % report_interval) == 0 or t == 0:
                 xt = x.detach().cpu()
@@ -287,7 +287,7 @@ def parse_args():
     p.add_argument('--npz_dir', default='/mnt/mydev2/Bob/LM2ANew/npz_split/test')
     p.add_argument('--ckpt', default='/mnt/mydev2/Bob/LM2ANew/checkpoints_adan/ckpt_step_10000.pt')
     p.add_argument('--out_dir', default='/mnt/mydev2/Bob/LM2ANew/testnpzwav')
-    p.add_argument('--device', default='cuda:1')
+    p.add_argument('--device', default='cuda')
     
     p.add_argument('--guidance', type=float, default=1.0, help='Classifier-free guidance weight. Default: 1.0 (no guidance)')
     p.add_argument('--steps', type=int, default=1000, help='Number of sampling steps. Default: 1000')
